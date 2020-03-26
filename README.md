@@ -1,2 +1,2 @@
 # JavaScript
-everyThing in JavaScript
+EveryThing in JavaScript
