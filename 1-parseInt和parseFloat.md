@@ -36,3 +36,20 @@ parseFloat始终会忽略前导的零，十六进制格式的字符串始终会�
 parseInt的第二个参数可以设置基数，按这个基数的进制转换
 ```
 ***
+
+#### 备注
+```
+let n = '123.879a'
+
+console.log(Number(n))      // NaN
+console.log(parseInt(n))    //123
+console.log(parseFloat(n))  //123.879
+```
+```
+// 以字符串开头转换都报NaN
+let n = 'a123.879a'
+
+console.log(Number(n))      // NaN
+console.log(parseInt(n))    //NaN
+console.log(parseFloat(n))  //NaN
+```
