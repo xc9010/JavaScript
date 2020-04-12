@@ -1,0 +1,85 @@
+<html>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .center1{
+            width: 200px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background: chocolate;
+        }
+
+        .abso{
+            width: 400px;
+            height: 100px;
+            position: relative;
+            background: darkcyan;
+        }
+        .abso .child{
+            position: absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            background: darkkhaki;
+            width: 50%;
+            height: 50px;;
+            margin: auto;
+        }
+
+        .absoMin{
+            width: 400px;
+            height: 100px;
+            position: relative;
+            background: rgb(58, 58, 70);
+        }
+        .absoMin .child{
+            height: 50px;
+            width: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background: darkkhaki;
+            margin-top:-25px;
+            margin-left: -100px;
+        }
+
+        .absoTrans{
+            width: 400px;
+            height: 100px;
+            position: relative;
+            background: rgb(108, 151, 58);
+        }
+        .absoTrans .child{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background: darkorange;
+            transform: translateX(-50%) translateY(-50%);
+        }
+    </style>
+    <body>
+        <div>
+
+            <div class="center1">
+                <p>单行文本垂直居中</p>
+            </div>
+
+            <div class="abso">
+                <div class="child">absolute上下左右，配合margin:aoto</div>
+            </div>
+
+            <div class="absoMin">
+                <div class="child">absolute固定自减居中</div>
+            </div>
+
+            <div class="absoTrans">
+                <div class="child">absolute+transform居中</div>
+            </div>
+
+        </div>
+    </body>
+</html>
