@@ -1,0 +1,37 @@
+### var let const
+
+- var 声明的变量会挂载在window上，而let和const不会
+```
+var a = 123
+let b = 223
+const c = 323
+
+window.a
+> 123
+window.b
+> undefined
+window.c
+> undefined
+```
+
+- var 声明的变量会存在变量提升，而let和const不会
+- let和const声明形成块级作用域
+- 同一作用域下let 和const 不能声明同名变量，而var 可以
+- 暂时性的死区
+```
+var a = 100;
+
+if(1){
+    a = 10;
+    //在当前块作用域中存在a使用let/const声明的情况下，给a赋值10时，只会在当前作用域找变量a，
+    // 而这时，还未到声明时候，所以控制台Error:a is not defined
+    let a = 1;
+}
+```
+- const
+```
+1.一旦声明必须赋值，不能使用null占位
+2.声明后不能再修改
+3.如果声明的是引用类型的数据，可以修改其属性
+```
+
