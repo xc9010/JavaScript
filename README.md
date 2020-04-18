@@ -1,5 +1,5 @@
 # JavaScript
-EveryThing in JavaScript
+EveryThing about Front-End
 
 序号 | 时间/频率 | 项目计划 | 备注
 ---|---|---|---
