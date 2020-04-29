@@ -81,3 +81,42 @@ Promise 在初始化时，传入的函数是同步执行的，然后注册then�
 同步代码块执行完毕后，才会在时间循环中检测是否有可用的promise回调
 有就执行，没有就继续下一个事件循环
 ```
+
+#### 执行顺序
+
+- 自身
+
+```
+let promise = new Promise(function(resolve, reject) {
+    console.log(1)
+    resolve();
+})
+promise.then(() => {
+    console.log(2)
+})
+console.log(3)
+
+// 执行顺序为1、3、2
+```
+
+- 与定时器混合
+```
+let promise = new Promise(function(resolve, reject) {
+    console.log(1)
+    resolve();
+})
+setTimeout(() => {
+    console.log(2)
+},0)
+promise.then(() => {
+    console.log(3)
+})
+console.log(4)
+
+// 执行顺序为1、4、3、2
+
+// 当promise执行时候，先执行同步的任务，打印出1，
+// 然后执行4，这时候执行完同步任务了，
+// 再去微任务队列执行promise的then，打印3，
+// 最后去事件队列执行setTimeout,打印2
+```
