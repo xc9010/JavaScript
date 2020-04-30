@@ -1,0 +1,61 @@
+<html>
+    <style>
+    
+    
+        #main{
+            width: 100%;
+            height: 100%;
+        }
+
+        .cont{
+            width: 200px;
+            height: 200px;
+            background-color: azure;
+        }
+
+        .mainTop{
+            background-color: blueviolet;
+            margin-bottom: 20px;
+        }
+
+        .mainTopMin{
+            background-color: blueviolet;
+            margin-bottom: -20px;
+        }
+
+        .main1{
+            background-color: darkgray;
+            margin-top: 20px;
+        }
+
+        .main2{
+            background-color: darkgray;
+            margin-top: -20px;
+        }
+
+        .main3{
+            background-color: darkgray;
+            margin-top: -10px;
+        }
+
+    </style>
+    <body>
+        <div id="main">
+            <h2>margin重叠主要是垂直方向</h2>
+            <h3>1-上下margin一样的话就合并，都为正，则取最大值</h3>
+            <div class="cont mainTop">1</div>
+            <div class="cont main1">2</div>
+            <hr/>
+            <h3>2-后面的margin为负,则取绝对值再减</h3>
+            <div class="cont mainTop">1</div>
+            <div class="cont main2">2</div>
+            <hr/>
+            <h3>3-都为负的话，取绝对值，然后0减最大值</h3>
+            <div class="cont mainTopMin">1</div>
+            <div class="cont main3">3</div>
+
+
+        </div>
+
+    </body>
+</html>
