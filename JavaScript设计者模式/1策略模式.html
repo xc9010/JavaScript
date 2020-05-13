@@ -1,0 +1,57 @@
+<html>
+
+<body>
+  <h1>JavaScript设计者模式</h1>
+  <h3>1-策略模式</h3>
+</body>
+
+<script>
+  // 维护权限列表
+  const jobList = ['FE', 'BE'];
+
+  // 策略
+  const strategies = {
+    checkRole: val => val === 'juejin',
+    checkGrade: val => val >= 1,
+    checkJob: val => jobList.indexOf(val) > -1,
+    checkEatType: val => val === 'eat melons',
+  };
+
+  // 校验规则
+  const Validator = function () {
+    this.cache = [];
+
+    // 添加策略事件
+    this.add = (val, method) => this.cache.push(() => strategies[method](val))
+
+    // 检查
+    this.check = () => {
+      for (let i = 0; i < this.cache.length; i++) {
+        let valiFn = this.cache[i];
+        if (!valiFn()) {
+          return false;
+        }
+      }
+      return true;
+    };
+  };
+
+  // 策略模式进行操作
+  const compose2 = function () {
+    const validator = new Validator();
+    const data2 = {
+      role: 'juejin',
+      job: 'FE'
+    };
+    validator.add(data2.role, 'checkRole');
+    validator.add(data2.job, 'checkJob');
+
+    const result = validator.check();
+    console.log(result)
+    return result;
+  };
+
+  compose2()
+</script>
+
+</html>
