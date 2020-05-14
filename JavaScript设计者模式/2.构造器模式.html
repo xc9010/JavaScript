@@ -1,0 +1,54 @@
+<html>
+
+<body>
+  <h1>JavaScript设计者模式</h1>
+  <h3>2-构造器模式</h3>
+</body>
+
+<script>
+
+  const obj = {};
+
+  function Car(model, money, miles) {
+    this.model = model;
+    this.money = money;
+    this.miles = miles;
+
+    this.toString = function () {
+      return this.model + '-' + this.money + '-' + this.miles;
+    }
+  }
+
+  // 实例化出来
+
+  var civic = new Car("Honda Civic", 2009, 20000);
+  var mondeo = new Car("Ford Mondeo", 2010, 5000);
+
+  console.log(civic.toString())
+  console.log(mondeo.toString())
+
+  // 以上是个简单版的构造器模式，但是不容易继承，而且toString()容易被重新定义
+  console.log('****************************************************')
+
+  function Plane(model, money, miles) {
+    this.model = model;
+    this.money = money;
+    this.miles = miles;
+  }
+
+  Plane.prototype.toString = function () {
+      return this.model + '-' + this.money + '-' + this.miles;
+  }
+
+  var boeing = new Plane("boeing", 1924, 200000000);
+  var airbus = new Plane("airbus", 19080, 100000000);
+
+  console.log(boeing.toString())
+  console.log(airbus.toString())
+
+  // 这样单个toString就被所有的Plane对象所共有了
+
+
+</script>
+
+</html>
