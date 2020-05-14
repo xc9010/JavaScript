@@ -39,3 +39,15 @@ const glob = require('glob');
 const temp = glob.sync()
 ```
 [参考打包公共模块](https://segmentfault.com/a/1190000012828879?utm_source=tag-newest)
+
+***
+
+##### T 20.05.14
+
+```
+经过几天的折腾，现在包还有10MB的大小，压缩后只有5MB了，
+把echarts，还有一个第三方包配成了CDN引入，加上本身HappyPack的使用，打包速度提高了许多
+
+
+```
+
