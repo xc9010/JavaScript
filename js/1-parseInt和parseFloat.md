@@ -53,3 +53,9 @@ console.log(Number(n))      // NaN
 console.log(parseInt(n))    //NaN
 console.log(parseFloat(n))  //NaN
 ```
+
+```
+[1,2,3].map(parseInt)
+[1,2,3].map((v, i) => parseInt(v, i))
+// [1, NaN, NaN]
+```
