@@ -153,16 +153,94 @@ setTimeout(obj.foo, 100); // 'global'
 
 - 显式绑定
 ```
+    显示绑定可以使用函数的call(...)和apply(...)方法
+    严格来说，JavaScript的宿主环境有时会提供一些非常特殊的函数；
 
-```
+    这两个方法是如何工作的呢？
+    它们的第一个参数是一个对象，是给this准备的，接着在调用函数时将其绑定到this。因为你可以直接指定this的绑定对象，因此我们称之为显式绑定。
 
-```
+    具体见【js-7-bind、apply、call.md】
 ```
 
 - new绑定
 
+```
+    具体见【js-12-new操作符.md】
+```
+
 #### 3-优先级
+
+- 首先，默认绑定的优先级是四条规则中最低的
+
+- 考虑隐式绑定和显式绑定
+```
+    function foo() {
+        console.log(this.a)
+    }
+
+    var obj1 = {
+        a: 2,
+        foo: foo
+    }
+
+    var obj2 = {
+        a: 3,
+        foo: foo
+    }
+
+    obj1.foo(); // 2
+    obj2.foo(); // 3
+
+    obj1.foo.call(obj2); // 3
+    obj2.foo.call(obj1); // 2
+```
+```
+得知：显式绑定 比 隐式绑定 的优先级 高
+```
+
+- new绑定 和 隐式绑定
+```
+    function foo(sth) {
+        this.a = sth;
+    }
+
+    var obj1 = {
+        foo: foo
+    }
+
+    var obj2 = {};
+
+    obj1.foo(2);
+    console.log(obj1.a); // 2
+
+    obj1.foo.call(obj2, 3);
+    console.log(obj2.a); // 3
+
+    var bar = new obj1.foo(4);
+    console.log(obj1.a); // 2
+    console.log(bar.a); // 4
+
+```
+```
+得知：new绑定 比 隐式绑定 优先级 高
+```
+> 关于 new绑定和显式绑定谁优先级高 ——>P93 
+
+
+#### 总结
+```
+ 1，函数是否在new中 调用 ？ 是的话this绑定的是新创建的对象
+
+ 2，函数是否通过call、apply绑定调用 ？ 是的话，this绑定的是指定的对象
+
+ 3，函数是否在上下文中调用 ？ 是的话，this绑定的是哪个上下文对象
+
+ 4，如果都不是的话，则使用默认绑定。严格模式下绑定到undefined；否则绑定到全局对象
+```
 
 #### 4-绑定例外
 
+> p96
+
 #### 5-this词法
+
