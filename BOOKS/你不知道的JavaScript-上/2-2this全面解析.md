@@ -244,3 +244,54 @@ setTimeout(obj.foo, 100); // 'global'
 
 #### 5-this词法
 
+前面介绍的四条规则包含所有正常的函数，但ES6中有一种特殊函数类型无法使用这些规则——箭头函数
+
+> 箭头函数不是使用function关键字定义，而是使用被称为'胖箭头'的操作符=>来定义的。箭头函数不使用this的四种标准规则，而是根据外层作用域来决定this的。
+
+箭头函数的词法作用域
+```
+function foo() {
+    return (a) => {
+        // this继承自foo()
+        console.log(this.a)
+    };
+}
+
+var obj1 = {
+    a: 2
+}
+
+var obj2 = {
+    a: 3
+}
+
+var bar = foo.call(obj1);
+
+bar.call(obj2); // 2
+这里不适用this的四种规则，new也不行
+
+```
+
+箭头函数常用于回掉函数中
+
+在ES6之前，我们这样使用一种与箭头函数完全一样的模式
+```
+functin foo() {
+    var self = this;
+    setTimeout(function() {
+        console.log(self.a)
+    }, 100);
+}
+var obj = {
+    a: 2
+}
+
+foo.call(obj); // 2
+```
+
+> 虽然self = this和箭头函数看起来都可以取代bing()，但是本质上来说，它们想替代的是this机制
+
+应当：
+-   只使用词法作用域并完全抛弃错误this风格的代码
+- 完全采用this风格，在必要时使用bind(...)，尽量避免使用self = this和箭头函数
+
