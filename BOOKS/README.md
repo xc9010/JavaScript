@@ -1,6 +1,6 @@
 ### Books
 
-- 你不知道的 JavaScript上卷
+- 你不知道的 JavaScript上卷[ok]
 - 你不知道的 JavaScript中卷
 - 你不知道的 JavaScript下卷
 - JavaScript 函数式编程指南
