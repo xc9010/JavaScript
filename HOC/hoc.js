@@ -6,7 +6,7 @@
  * @param {*} val 
  */
 const newPromise = function (fn, param) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         const res = fn(param)
         if (res) resolve(res)
         reject('error')
