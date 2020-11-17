@@ -1,0 +1,36 @@
+<html>
+    <head></head>
+    <body>
+        
+    </body>
+    <script>
+        console.log('start')
+        
+        const obj = {
+            a: '123',
+            b: '223',
+            c: '323',
+            d: function() {
+                console.log('a', this.a)
+            }
+        }
+
+        function fun(obj) {
+            console.log('obj', obj)
+            const {
+                a: a,
+                b: x,
+            } = obj;
+
+            console.log(a)
+            console.log(x)
+
+        }
+
+
+        fun(obj)
+
+
+
+    </script>
+</html>
