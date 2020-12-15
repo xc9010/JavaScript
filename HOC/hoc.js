@@ -19,4 +19,10 @@ const add = function (val) {
 
 const np = newPromise(add, 12)
 
-np.then(res => console.log(res))
+// np.then(res => console.log(res)).then(v => console.log(v))
+
+console.log('--------------')
+np.then(v => console.log(v))
+np.then(v => console.log(v))
+
+console.log([].concat(...[1,[2,3,5,[6,7,8]]]))
